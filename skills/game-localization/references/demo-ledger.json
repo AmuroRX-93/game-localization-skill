@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "scope": {
+    "game": "Synthetic test",
+    "platform": "Synthetic",
+    "revision": "demo",
+    "inventory_basis": "Synthetic fixture only",
+    "build_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "inventory_complete": false
+  },
+  "resources": [
+    {
+      "id": "r1",
+      "path": "demo.bin::text",
+      "kind": "text",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "disposition": "extracted",
+      "expected_entries": 1,
+      "extraction_complete": false,
+      "evidence": "Synthetic fixture"
+    }
+  ],
+  "entries": [
+    {
+      "id": "e1",
+      "resource_id": "r1",
+      "locator": "text:1",
+      "source": "Item {item}",
+      "target": "物品 {item}",
+      "decision": "translate",
+      "review": "pending",
+      "writeback": "pending",
+      "token_mode": "unverified",
+      "source_tokens": [
+        "{item}"
+      ],
+      "target_tokens": [
+        "{item}"
+      ]
+    }
+  ],
+  "tests": [
+    {
+      "id": "t1",
+      "scenario": "Synthetic screen",
+      "build_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "status": "pending"
+    }
+  ]
+}
