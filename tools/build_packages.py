@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build portable and Cursor packages from a single skill source. No network."""
+"""Build five tool packages and one combined bundle from a single source. No network."""
 import argparse
 import hashlib
 from pathlib import Path
@@ -26,14 +26,11 @@ def write_archive(path, entries):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--version', default='0.2.0')
+    parser.add_argument('--version', default='0.3.0')
     parser.add_argument('--output', type=Path, default=ROOT / 'dist')
     args = parser.parse_args()
     if not re.fullmatch(r'\d+\.\d+\.\d+', args.version):
         parser.error('version must be MAJOR.MINOR.PATCH')
-    # Installation instructions contain versioned archive names.
-    guide = (ROOT / 'docs' / 'CURSOR.md').read_text(encoding='utf-8')
-    guide = guide.replace('v0.2.0.zip', f'v{args.version}.zip')
     files = {}
     for path in sorted(SKILL.rglob('*')):
         if path.is_file() and '__pycache__' not in path.parts and path.name != '.DS_Store' and path.suffix != '.pyc':
@@ -43,15 +40,28 @@ def main():
     assert 'SKILL.md' in files and 'LICENSE' in files
     args.output.mkdir(parents=True, exist_ok=True)
     artifacts = []
-    for flavor, prefix in [('portable', 'game-localization/'), ('cursor', '.cursor/skills/game-localization/')]:
+    variants = [
+        ('portable', 'game-localization/', '01-Codex', 'CODEX.md'),
+        ('cursor', '.cursor/skills/game-localization/', '02-Cursor', 'CURSOR.md'),
+        ('kimi', '.kimi-code/skills/game-localization/', '03-Kimi-Code', 'KIMI.md'),
+        ('qwen', '.qwen/skills/game-localization/', '04-Qwen-Code', 'QWEN.md'),
+        ('codebuddy', '.codebuddy/skills/game-localization/', '05-CodeBuddy', 'CODEBUDDY.md'),
+    ]
+    combined = {'先看这里.md': (ROOT / 'docs' / 'ALL-IN-ONE.md').read_bytes()}
+    for flavor, prefix, folder, guide_name in variants:
         entries = {prefix + name: data for name, data in files.items()
                    if flavor == 'portable' or not name.startswith('agents/')}
-        if flavor == 'cursor':
-            entries['先看这里.md'] = guide.encode('utf-8')
-        filename = f'game-localization{"-cursor" if flavor == "cursor" else ""}-v{args.version}.zip'
-        destination = args.output / filename
+        guide = (ROOT / 'docs' / guide_name).read_text(encoding='utf-8')
+        guide = re.sub(r'v\d+\.\d+\.\d+\.zip', f'v{args.version}.zip', guide)
+        entries['先看这里.md'] = guide.encode('utf-8')
+        suffix = '' if flavor == 'portable' else '-' + flavor
+        destination = args.output / f'game-localization{suffix}-v{args.version}.zip'
         write_archive(destination, entries)
         artifacts.append(destination)
+        combined.update({folder + '/' + name: data for name, data in entries.items()})
+    destination = args.output / f'game-localization-all-v{args.version}.zip'
+    write_archive(destination, combined)
+    artifacts.append(destination)
     sums = '\n'.join(f'{hashlib.sha256(p.read_bytes()).hexdigest()}  {p.name}' for p in artifacts) + '\n'
     (args.output / 'SHA256SUMS.txt').write_text(sums, encoding='utf-8')
     print(sums, end='')

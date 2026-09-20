@@ -27,11 +27,13 @@ flowchart LR
 
 ## 安装和使用
 
-**Cursor 用户：** 下载 `game-localization-cursor-v0.2.0.zip`，按包内 `先看这里.md` 将技能放到项目的 `.cursor/skills/`，在 Agent 中用 `/game-localization` 调用。[Cursor 安装说明](docs/CURSOR.md) · [国产工具与兼容范围](docs/COMPATIBILITY.md)
+**推荐下载总包：[game-localization-all-v0.3.0.zip](https://github.com/AmuroRX-93/game-localization-skill/releases/download/v0.3.0/game-localization-all-v0.3.0.zip)**。解压后按工具选择 Codex、Cursor、Kimi Code、Qwen Code 或 CodeBuddy 文件夹，每份都有「先看这里.md」。不用分别下载，也不要把整个总包安装到技能目录。
+
+**Cursor 用户：** 下载 `game-localization-cursor-v0.3.0.zip`，按包内 `先看这里.md` 将技能放到项目的 `.cursor/skills/`，在 Agent 中用 `/game-localization` 调用。[Cursor 安装说明](docs/CURSOR.md) · [国产工具与兼容范围](docs/COMPATIBILITY.md)
 
 **Codex 或其他工具：**
 
-下载 Release 中的 `game-localization-v0.2.0.zip`，解压，将整个 `game-localization` 文件夹放到你的技能目录；Codex 通常是 `~/.codex/skills/`，配置了 `CODEX_HOME` 时使用其中的 `skills/`。已有同名技能先比较差异，不直接覆盖定制版。开始新任务后调用：
+下载 Release 中的 `game-localization-v0.3.0.zip`，解压，将整个 `game-localization` 文件夹放到你的技能目录；Codex 通常是 `~/.codex/skills/`，配置了 `CODEX_HOME` 时使用其中的 `skills/`。已有同名技能先比较差异，不直接覆盖定制版。开始新任务后调用：
 
 > 使用 $game-localization 处理这个游戏的汉化。先核对版本和已有工程，列出文本、字体、贴图、字幕与未解析资源，再做一个能回填验证的小样。
 
@@ -63,7 +65,7 @@ python3 -m unittest discover -s tests -v
 
 - `skills/game-localization/`：可直接安装的 Skill、专项参考和清单检查脚本。
 - `docs/`：Cursor 安装说明、国产工具与兼容性边界。
-- `tools/build_packages.py`：从同一份源文件生成通用包与 Cursor 包，执行 `python3 tools/build_packages.py`。
+- `tools/build_packages.py`：从同一份源文件生成五种工具包与一个总包，执行 `python3 tools/build_packages.py`。
 - `tests/`：检查脚本的合成数据测试；不需要任何游戏文件。
 - `VALIDATION.md`：本版实际验证范围和场景审查。
 
