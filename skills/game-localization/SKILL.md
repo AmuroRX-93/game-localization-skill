@@ -1,15 +1,18 @@
 ---
 name: game-localization
-description: Plan, implement, audit, and package game translations or localization ports, covering resource inventories, bilingual review, terminology, legacy encodings, fonts, UI textures, subtitles, reinsertion, and runtime verification. Use for game localization engineering and missing-text regressions, not general gameplay, emulator tuning, or unrelated file cleanup.
+description: Plan, implement, audit, and package Japanese-to-Chinese or English-to-Chinese game localizations and ports, covering inventories, bilingual review, terminology, encodings, fonts, UI textures, subtitles, reinsertion, and runtime verification. Use for game localization engineering and missing-text regressions, not general gameplay, emulator tuning, or unrelated file cleanup.
 ---
 
 # 游戏汉化工程
 
 把汉化做成可追溯、可回退、可验证的工程。本 Skill 提供跨游戏工作方法，不提供万能解包器；平台、引擎、区域和版本各自需要经过验证的适配器。根据本轮任务选择阶段，不为一个局部修正强制重跑整个项目。
 
+支持日文原文或英文原文译为中文，以及日英混合资源；这表示工作流程覆盖这些语言，不代表任意游戏格式已经适配。
+
 ## 先确认正在处理什么
 
 - 从文件和已有记录确认游戏、平台、区域／产品编号、实际运行版本、原版指纹、现有补丁版本及运行入口。文件夹名、下载名称、版本字段之间不能相互替代。
+- 确认实际源语言（日文／英文／混合）、中文目标地区和主译版本。不要把英文版默认当成日文直译，或把中文说明文档的语言当作游戏原文语言。
 - 明确交付物：校对表、翻译草稿、可运行候选、回归修复、差分包或发布。“小样”结合上下文判断是表格小样还是游戏内显示样例，不擅自换成另一种。
 - 记录本轮范围、用户确定的术语／字体／保留规则及验收目标。汉化、性能调优、控制逻辑改造和模拟器修复分开；使用现有授权推进，研究请求不等于安装或发布请求。
 - 找到真正被加载的文件：本体、更新、DLC、安装数据、松散文件、归档副本的优先级可能不同。证明文件被读取后再判断漏译；不要盲删全部缓存。
@@ -19,6 +22,7 @@ description: Plan, implement, audit, and package game translations or localizati
 | 当前工作 | 说明 |
 |---|---|
 | 全量盘点、抽取、校对表、术语统一、翻译移植 | [文本与覆盖率](references/text-and-coverage.md) |
+| 日译中、英译中、日英版本对照与语言专项校对 | [日英汉化要点](references/languages.md) |
 | 编码、二进制封包、字库、内存、按钮贴图 | [资源写回与显示](references/resources-and-rendering.md) |
 | 有声无字幕、字幕错时、过场影片回装 | [影音与字幕](references/media.md) |
 | 缺字／崩溃定位、运行验收、打包、旧版升级与发布 | [验证与交付](references/verification-and-release.md) |
