@@ -2,7 +2,7 @@
 
 一套给 AI 编程助手和汉化团队使用的可复用工作流程，支持 **日文→中文、英文→中文** 及日英混合资源：从版本确认、资源盘点、翻译审校，到字库、贴图、字幕、封包、运行验证和补丁交付。
 
-**这是工程方法与检查工具，不是“一键支持所有游戏”的汉化器。** 首版基于 ACFA、AC4、ACV、高达 UC、水天之泪、ACFF 等项目记录梳理，并参考传统 ROM 汉化和现代本地化工具的一手资料。尚未在所有平台、引擎和新项目上验证。
+**这是工程方法与检查工具，不是“一键支持所有游戏”的汉化器。** 流程基于 ACFA、AC4、ACV、高达 UC、水天之泪、ACFF 等项目记录梳理，并参考传统 ROM 汉化和现代本地化工具的一手资料。尚未在所有平台、引擎和新项目上验证。
 
 [阅读 Skill](skills/game-localization/SKILL.md) · [完整流程](skills/game-localization/references/project-workflow.md) · [资料来源](skills/game-localization/references/sources.md) · [下载发行包](https://github.com/AmuroRX-93/game-localization-skill/releases/latest)
 
@@ -27,13 +27,13 @@ flowchart LR
 
 ## 安装和使用
 
-**推荐下载总包：[game-localization-all-v0.3.0.zip](https://github.com/AmuroRX-93/game-localization-skill/releases/download/v0.3.0/game-localization-all-v0.3.0.zip)**。解压后按工具选择 Codex、Cursor、Kimi Code、Qwen Code 或 CodeBuddy 文件夹，每份都有「先看这里.md」。不用分别下载，也不要把整个总包安装到技能目录。
+**推荐下载总包：[game-localization-all-v0.4.0.zip](https://github.com/AmuroRX-93/game-localization-skill/releases/download/v0.4.0/game-localization-all-v0.4.0.zip)**。解压后按工具选择 Codex、Cursor、Kimi Code、Qwen Code 或 CodeBuddy 文件夹，每份都有「先看这里.md」。不用分别下载，也不要把整个总包安装到技能目录。
 
-**Cursor 用户：** 下载 `game-localization-cursor-v0.3.0.zip`，按包内 `先看这里.md` 将技能放到项目的 `.cursor/skills/`，在 Agent 中用 `/game-localization` 调用。[Cursor 安装说明](docs/CURSOR.md) · [国产工具与兼容范围](docs/COMPATIBILITY.md)
+**Cursor 用户：** 下载 `game-localization-cursor-v0.4.0.zip`，按包内 `先看这里.md` 将技能放到项目的 `.cursor/skills/`，在 Agent 中用 `/game-localization` 调用。[Cursor 安装说明](docs/CURSOR.md) · [国产工具与兼容范围](docs/COMPATIBILITY.md)
 
 **Codex 或其他工具：**
 
-下载 Release 中的 `game-localization-v0.3.0.zip`，解压，将整个 `game-localization` 文件夹放到你的技能目录；Codex 通常是 `~/.codex/skills/`，配置了 `CODEX_HOME` 时使用其中的 `skills/`。已有同名技能先比较差异，不直接覆盖定制版。开始新任务后调用：
+下载 Release 中的 `game-localization-v0.4.0.zip`，解压，将整个 `game-localization` 文件夹放到你的技能目录；Codex 通常是 `~/.codex/skills/`，配置了 `CODEX_HOME` 时使用其中的 `skills/`。已有同名技能先比较差异，不直接覆盖定制版。开始新任务后调用：
 
 > 使用 $game-localization 处理这个游戏的汉化。先核对版本和已有工程，列出文本、字体、贴图、字幕与未解析资源，再做一个能回填验证的小样。
 
@@ -42,6 +42,25 @@ flowchart LR
 > 使用 $game-localization 审核现有补丁，只修按键说明缺字，保留画面和手柄设置。
 
 其他支持文件型 Skill 的助手可加载 `SKILL.md` 并保留整个目录；不支持 Skill 的工具或人工团队可直接参考文档。没有绑定特定模型、云服务、操作系统或付费翻译 API。
+
+## 汉化实用工具包（v0.4.0）
+
+这次把平常工程里使用的工具整理成其他 agent 可调用的命令行入口，加入全部五种客户端包：
+
+- XMB 文本抽取/回填、显式控制码和字形检查。
+- 已适配 BfPk ARB / FPK / TEX 容器的列举、抽取和候选替换。
+- GTF 贴图改字/预览、字体 cmap 检查、UV 坐标换算。
+- 可校验的 copy/add 差分创建与重建，支持大文件流式读取。
+- 依赖诊断和不需要游戏文件的一键自测。
+
+[完整工具说明、适配范围与命令示例](skills/game-localization/references/toolkit.md)。核心仅需 Python 3.9+；贴图/字体按需使用 Pillow、NumPy、fontTools。没有写死本机路径，不需要本作者的游戏工程、字体或账号。
+
+```sh
+python3 skills/game-localization/scripts/localization_toolkit.py doctor
+python3 skills/game-localization/scripts/toolkit_selftest.py
+```
+
+工具只生成新候选，拒绝覆盖输入；不会自动启动游戏或写入游戏安装目录。解包器只支持文档列明的变体，未知格式应另行适配。其他 agent 的试用结果及未测项见 [验证记录](VALIDATION.md)。
 
 ## 可执行检查
 
@@ -59,7 +78,7 @@ python3 skills/game-localization/scripts/audit_ledger.py project-ledger.json
 python3 -m unittest discover -s tests -v
 ```
 
-19 项自动测试通过；具体边界见 [验证记录](VALIDATION.md)。
+40 项自动测试通过；具体边界见 [验证记录](VALIDATION.md)。
 
 ## 仓库结构
 
@@ -79,4 +98,4 @@ python3 -m unittest discover -s tests -v
 
 ## English summary
 
-A reusable Japanese-to-Chinese and English-to-Chinese game localization engineering skill for AI assistants and fan-translation teams. Includes a native Cursor skill package generated from the same source. It covers inventory, terminology, extraction/reinsertion, legacy fonts, UI textures, subtitles, memory constraints, runtime QA and releases. It is a methodology with a read-only ledger auditor, not a universal game parser. Format-specific adapters must be validated per game/version. The primary documentation is in Chinese; the auditor uses English field names and diagnostics.
+A reusable Japanese-to-Chinese and English-to-Chinese game localization engineering skill for AI assistants and fan-translation teams. Includes a native Cursor skill package generated from the same source. It covers inventory, terminology, extraction/reinsertion, legacy fonts, UI textures, subtitles, memory constraints, runtime QA and releases. It includes a read-only ledger auditor and an offline CLI toolkit for audited resource formats, text reinsertion, texture typesetting and binary deltas; it is not a universal game parser. Format-specific adapters must be validated per game/version. The primary documentation is in Chinese; the auditor uses English field names and diagnostics.

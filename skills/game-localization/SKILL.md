@@ -17,6 +17,12 @@ description: Plan, implement, audit, and package Japanese-to-Chinese or English-
 - 记录本轮范围、用户确定的术语／字体／保留规则及验收目标。汉化、性能调优、控制逻辑改造和模拟器修复分开；使用现有授权推进，研究请求不等于安装或发布请求。
 - 找到真正被加载的文件：本体、更新、DLC、安装数据、松散文件、归档副本的优先级可能不同。证明文件被读取后再判断漏译；不要盲删全部缓存。
 
+## 使用已有工具
+
+处理资源前先读 [可执行工具包](references/toolkit.md)，确认格式边界；执行 `python3 scripts/localization_toolkit.py doctor` 查看依赖。跨 agent 首次使用可运行 `python3 scripts/toolkit_selftest.py`，它只用虚构资源验证抽取、回填、容器和差分流程。
+
+工具提供实际可调用的 XMB 文本抽取/回填、BfPk/FPK/TEX 资源操作、字体与 token 检查、GTF 改字/预览、UV 换算及 copy/add 差分。格式适配器仅覆盖已观察变体；核心使用标准库，贴图/字体命令依赖按需安装。所有写入都生成新候选，不能把候选成功当成已安装或运行通过。
+
 ## 按工作读取
 
 | 当前工作 | 说明 |

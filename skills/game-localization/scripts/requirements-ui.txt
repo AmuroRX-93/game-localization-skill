@@ -1,0 +1,4 @@
+# Optional UI/font commands only. Core toolkit uses the Python standard library.
+Pillow>=10,<13
+numpy>=1.24,<3
+fonttools>=4.40,<5
