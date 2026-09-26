@@ -107,3 +107,7 @@ box 是左上原点像素矩形，右/下边界不包含。默认参考旧字的
 > 读取该技能的 references/toolkit.md，先运行 doctor 和 toolkit_selftest.py。使用新输出目录；核对输入格式与指纹，用虚构小样走通抽取、翻译、回填、差分重建，再处理我提供的候选资源。不要启动模拟器或改我的游戏目录，遇到不支持格式就报告具体限制。
 
 实现来源和便携化边界见 [工具来源](toolkit-provenance.md)。
+
+## 可选影音工具
+
+音轨探测/提取、本地 ASR 候选、字幕检查、SRT/ASS 导出、烧录和简单矩形去字预览，使用 `scripts/media_toolkit.py`。依赖、命令、验证限制和复杂背景外部流程见 [media-tools.md](media-tools.md)；不包含模型和游戏专用影片封装器。

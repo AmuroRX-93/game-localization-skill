@@ -27,13 +27,13 @@ flowchart LR
 
 ## 安装和使用
 
-**推荐下载总包：[game-localization-all-v0.5.0.zip](https://github.com/AmuroRX-93/game-localization-skill/releases/download/v0.5.0/game-localization-all-v0.5.0.zip)**。解压后按工具选择 Codex、Cursor、Kimi Code、Qwen Code 或 CodeBuddy 文件夹，每份都有「先看这里.md」。不用分别下载，也不要把整个总包安装到技能目录。
+**推荐下载总包：[game-localization-all-v0.6.0.zip](https://github.com/AmuroRX-93/game-localization-skill/releases/download/v0.6.0/game-localization-all-v0.6.0.zip)**。解压后按工具选择 Codex、Cursor、Kimi Code、Qwen Code 或 CodeBuddy 文件夹，每份都有「先看这里.md」。不用分别下载，也不要把整个总包安装到技能目录。
 
-**Cursor 用户：** 下载 `game-localization-cursor-v0.5.0.zip`，按包内 `先看这里.md` 将技能放到项目的 `.cursor/skills/`，在 Agent 中用 `/game-localization` 调用。[Cursor 安装说明](docs/CURSOR.md) · [国产工具与兼容范围](docs/COMPATIBILITY.md)
+**Cursor 用户：** 下载 `game-localization-cursor-v0.6.0.zip`，按包内 `先看这里.md` 将技能放到项目的 `.cursor/skills/`，在 Agent 中用 `/game-localization` 调用。[Cursor 安装说明](docs/CURSOR.md) · [国产工具与兼容范围](docs/COMPATIBILITY.md)
 
 **Codex 或其他工具：**
 
-下载 Release 中的 `game-localization-v0.5.0.zip`，解压，将整个 `game-localization` 文件夹放到你的技能目录；Codex 通常是 `~/.codex/skills/`，配置了 `CODEX_HOME` 时使用其中的 `skills/`。已有同名技能先比较差异，不直接覆盖定制版。开始新任务后调用：
+下载 Release 中的 `game-localization-v0.6.0.zip`，解压，将整个 `game-localization` 文件夹放到你的技能目录；Codex 通常是 `~/.codex/skills/`，配置了 `CODEX_HOME` 时使用其中的 `skills/`。已有同名技能先比较差异，不直接覆盖定制版。开始新任务后调用：
 
 > 使用 $game-localization 处理这个游戏的汉化。先核对版本和已有工程，列出文本、字体、贴图、字幕与未解析资源，再做一个能回填验证的小样。
 
@@ -43,7 +43,15 @@ flowchart LR
 
 其他支持文件型 Skill 的助手可加载 `SKILL.md` 并保留整个目录；不支持 Skill 的工具或人工团队可直接参考文档。没有绑定特定模型、云服务、操作系统或付费翻译 API。
 
-## 本次更新（v0.5.0）
+## 本次更新（v0.6.0）
+
+新增可选影音工具 `scripts/media_toolkit.py`：音轨/声道选择、本地 faster-whisper 音频原文识别入口、字幕时间轴检查、SRT/ASS 导出、烧录预览，以及固定区域限定时段的简单去字候选。补齐无字幕影片新增中文、旧硬字幕清底后重做的流程。
+
+[媒体工具、依赖与完整命令](skills/game-localization/references/media-tools.md)。不捆绑模型、FFmpeg 或字体，不自动下载或上传音频。复杂背景修复、OCR 跟踪、强制对齐等外部能力明确区分，不能称为一键内置。观看 MP4 仍须经过游戏专用封装与回装验证。
+
+本机已测音轨提取、字幕导出/检查、限时去字和拒绝覆盖。ASR 封装仅通过接口替身测试，未跑真实模型；烧录测试因 FFmpeg 缺少 libass 跳过。Windows/Intel Mac 与实际游戏回装尚未实测，详见验证记录。
+
+## v0.5.0 校对稿更新
 
 - 新增任务校对稿 XLSX 生成器，按参考样式生成任务分组、合并单元格、宋体 11、配色和独立原文栏，并附稳定 ID 映射。支持重复的显示编号；缺失原文保持空白。
 - 补充渐变背景与装饰细节保护、大字贴图裁切/采样、控制码和空白符处理的项目经验。
@@ -86,7 +94,7 @@ python3 skills/game-localization/scripts/audit_ledger.py project-ledger.json
 python3 -m unittest discover -s tests -v
 ```
 
-40 项自动测试通过；具体边界见 [验证记录](VALIDATION.md)。
+自动测试共 56 项：55 项通过、1 项因缺 libass 跳过；具体边界见 [验证记录](VALIDATION.md)。
 
 ## 仓库结构
 

@@ -4,7 +4,7 @@
 
 ## 推荐：安装到汉化项目
 
-1. 打开总包的 `02-Cursor` 文件夹，或下载 Release 附件 `game-localization-cursor-v0.5.0.zip` 并解压。
+1. 打开总包的 `02-Cursor` 文件夹，或下载 Release 附件 `game-localization-cursor-v0.6.0.zip` 并解压。
 2. 包中有 `先看这里.md` 和 `.cursor/skills/game-localization/`。把这个 `game-localization` 文件夹放到你项目的 `.cursor/skills/` 下；已有同名文件夹先比较差异，不覆盖自行修改的版本。
 3. 用 Cursor 打开该项目，在 Agent 聊天中输入 `/`，搜索并选择 `game-localization`，再描述任务。
 4. 如果没发现技能，重新打开项目或新建会话，并检查路径是否多套了一层。可在 Customize → Skills 检查发现状态；界面入口以所用版本为准。
