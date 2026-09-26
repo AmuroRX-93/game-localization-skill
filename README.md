@@ -27,13 +27,13 @@ flowchart LR
 
 ## 安装和使用
 
-**推荐下载总包：[game-localization-all-v0.4.0.zip](https://github.com/AmuroRX-93/game-localization-skill/releases/download/v0.4.0/game-localization-all-v0.4.0.zip)**。解压后按工具选择 Codex、Cursor、Kimi Code、Qwen Code 或 CodeBuddy 文件夹，每份都有「先看这里.md」。不用分别下载，也不要把整个总包安装到技能目录。
+**推荐下载总包：[game-localization-all-v0.5.0.zip](https://github.com/AmuroRX-93/game-localization-skill/releases/download/v0.5.0/game-localization-all-v0.5.0.zip)**。解压后按工具选择 Codex、Cursor、Kimi Code、Qwen Code 或 CodeBuddy 文件夹，每份都有「先看这里.md」。不用分别下载，也不要把整个总包安装到技能目录。
 
-**Cursor 用户：** 下载 `game-localization-cursor-v0.4.0.zip`，按包内 `先看这里.md` 将技能放到项目的 `.cursor/skills/`，在 Agent 中用 `/game-localization` 调用。[Cursor 安装说明](docs/CURSOR.md) · [国产工具与兼容范围](docs/COMPATIBILITY.md)
+**Cursor 用户：** 下载 `game-localization-cursor-v0.5.0.zip`，按包内 `先看这里.md` 将技能放到项目的 `.cursor/skills/`，在 Agent 中用 `/game-localization` 调用。[Cursor 安装说明](docs/CURSOR.md) · [国产工具与兼容范围](docs/COMPATIBILITY.md)
 
 **Codex 或其他工具：**
 
-下载 Release 中的 `game-localization-v0.4.0.zip`，解压，将整个 `game-localization` 文件夹放到你的技能目录；Codex 通常是 `~/.codex/skills/`，配置了 `CODEX_HOME` 时使用其中的 `skills/`。已有同名技能先比较差异，不直接覆盖定制版。开始新任务后调用：
+下载 Release 中的 `game-localization-v0.5.0.zip`，解压，将整个 `game-localization` 文件夹放到你的技能目录；Codex 通常是 `~/.codex/skills/`，配置了 `CODEX_HOME` 时使用其中的 `skills/`。已有同名技能先比较差异，不直接覆盖定制版。开始新任务后调用：
 
 > 使用 $game-localization 处理这个游戏的汉化。先核对版本和已有工程，列出文本、字体、贴图、字幕与未解析资源，再做一个能回填验证的小样。
 
@@ -43,7 +43,15 @@ flowchart LR
 
 其他支持文件型 Skill 的助手可加载 `SKILL.md` 并保留整个目录；不支持 Skill 的工具或人工团队可直接参考文档。没有绑定特定模型、云服务、操作系统或付费翻译 API。
 
-## 汉化实用工具包（v0.4.0）
+## 本次更新（v0.5.0）
+
+- 新增任务校对稿 XLSX 生成器，按参考样式生成任务分组、合并单元格、宋体 11、配色和独立原文栏，并附稳定 ID 映射。支持重复的显示编号；缺失原文保持空白。
+- 补充渐变背景与装饰细节保护、大字贴图裁切/采样、控制码和空白符处理的项目经验。
+- 补充 PS3 实机候选包、ISO、更新/DLC、签名与实际运行验证的区别。
+
+[校对稿格式与输入示例](skills/game-localization/references/review-workbooks.md)。XLSX 生成器另外需要 **Node.js 和已安装的 `@oai/artifact-tool`**；本包不捆绑该库或运行时，不影响原有 Python 工具。没有该库的客户端可参考附带的格式 JSON 使用自己的制表工具。当前只实现导出，未实现校订稿自动回写游戏。
+
+## 汉化实用工具包（v0.4.0 起）
 
 这次把平常工程里使用的工具整理成其他 agent 可调用的命令行入口，加入全部五种客户端包：
 

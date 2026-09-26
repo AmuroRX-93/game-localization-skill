@@ -1,0 +1,59 @@
+{
+  "profile": "mission-review-20260926",
+  "reference_filename": "装甲核心2 任务文本汇总_MISSION 01-03.xlsx",
+  "sheet_name": "任务文本汇总",
+  "headers": [
+    "关卡序号",
+    "STAGE（关卡名）",
+    "委托人",
+    "预付报酬",
+    "成功报酬",
+    "条目类别",
+    "条目编号",
+    "说话人",
+    "内容",
+    "日文原文"
+  ],
+  "font_name": "宋体",
+  "font_size": 11,
+  "header_fill": "#305496",
+  "header_color": "#FFFFFF",
+  "source_header_fill": "#FFCC99",
+  "source_header_color": "#3F3F76",
+  "border_color": "#BFBFBF",
+  "mission_fills": [
+    "#FFFFFF",
+    "#F2F7FC"
+  ],
+  "column_widths": [
+    10,
+    26,
+    24,
+    10,
+    10,
+    12,
+    12,
+    10,
+    70,
+    8.43,
+    8.43,
+    8.43,
+    8.43,
+    8.43,
+    8.43,
+    8.43
+  ],
+  "source_merge_columns": "J:P",
+  "metadata_merge_columns": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E"
+  ],
+  "header_height": 22.05,
+  "body_min_height": 28.8,
+  "freeze_rows": 1,
+  "autofilter": false,
+  "reference_sha256": "0962ce82aa7d66fbbc3bc4b1527766fee6de16f68dde4b1eeda8732613f4d708"
+}

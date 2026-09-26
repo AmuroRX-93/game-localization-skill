@@ -1,6 +1,6 @@
 ---
 name: game-localization
-description: Plan, implement, audit, and package Japanese-to-Chinese or English-to-Chinese game localizations and ports, covering inventories, bilingual review, terminology, encodings, fonts, UI textures, subtitles, reinsertion, and runtime verification. Use for game localization engineering and missing-text regressions, not general gameplay, emulator tuning, or unrelated file cleanup.
+description: Plan, implement, audit, and package Japanese-to-Chinese or English-to-Chinese game localizations and ports, including reference-matched proofreading workbooks, inventories, terminology, encodings, fonts, UI textures, subtitles, reinsertion, and runtime verification. Use for game localization engineering and missing-text regressions, not general gameplay, emulator tuning, or unrelated file cleanup.
 ---
 
 # 游戏汉化工程
@@ -28,10 +28,12 @@ description: Plan, implement, audit, and package Japanese-to-Chinese or English-
 | 当前工作 | 说明 |
 |---|---|
 | 全量盘点、抽取、校对表、术语统一、翻译移植 | [文本与覆盖率](references/text-and-coverage.md) |
+| 按用户样表生成任务/关卡 XLSX 校对稿 | [校对稿格式与生成脚本](references/review-workbooks.md) |
 | 日译中、英译中、日英版本对照与语言专项校对 | [日英汉化要点](references/languages.md) |
 | 编码、二进制封包、字库、内存、按钮贴图 | [资源写回与显示](references/resources-and-rendering.md) |
 | 有声无字幕、字幕错时、过场影片回装 | [影音与字幕](references/media.md) |
 | 缺字／崩溃定位、运行验收、打包、旧版升级与发布 | [验证与交付](references/verification-and-release.md) |
+| PS3 目录重建 ISO、更新/DLC 与 CFW/HEN 实机候选 | [PS3 封装与实机边界](references/ps3-packaging.md) |
 | 新平台／引擎的适配边界 | [适配器约定](references/adapters.md) |
 | 完整项目编排、传统汉化分工与 AI 的边界 | [项目流程](references/project-workflow.md) |
 | 规则的来源和适用边界 | [案例](references/case-notes.md)、[外部资料](references/sources.md) |

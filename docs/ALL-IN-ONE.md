@@ -14,7 +14,7 @@
 
 五份核心内容来自同一源码。非 Codex 包仅省略 `agents/openai.yaml`；差别在目录和安装／调用方式。不同工具可能使用相同或不同模型，实际能力取决于模型、文件权限和执行环境。
 
-这是可复用的汉化工程方法，不是所有游戏通用的解包器。Python 检查器验证清单内部矛盾，不能证明全游戏无遗漏或翻译质量。脚本需要 Python 3.9+。v0.4.0 新增的可执行工具、依赖诊断和小样见技能内 `references/toolkit.md`；先运行 `scripts/localization_toolkit.py doctor` 和 `scripts/toolkit_selftest.py`。核心只依赖标准库，图像/字体功能按需安装 `scripts/requirements-ui.txt`。
+这是可复用的汉化工程方法，不是所有游戏通用的解包器。Python 检查器验证清单内部矛盾，不能证明全游戏无遗漏或翻译质量。脚本需要 Python 3.9+。v0.5.0 新增的可执行工具、依赖诊断和小样见技能内 `references/toolkit.md`；先运行 `scripts/localization_toolkit.py doctor` 和 `scripts/toolkit_selftest.py`。核心只依赖标准库，图像/字体功能按需安装 `scripts/requirements-ui.txt`。
 
 已经检查包内完整性、相对引用和脚本运行。Codex 已在作者本机识别；其余四种工具的目录与调用方式已对照官方文档，尚未在对应客户端实际运行验证。
 

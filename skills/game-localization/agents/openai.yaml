@@ -1,4 +1,4 @@
 interface:
   display_name: "游戏汉化工程"
-  short_description: "支持日文与英文译为中文，覆盖资源盘点、术语校对、字库封包与运行验证"
-  default_prompt: "使用 $game-localization 检查这个游戏的汉化工程，先建立资源和验证清单，再完成本轮指定范围。"
+  short_description: "支持日英译中、指定格式任务校对稿、资源工具、字库贴图与运行验证"
+  default_prompt: "使用 $game-localization 完成本轮游戏汉化工作；按当前阶段读取说明，校对稿遵循用户样表，资源修改与运行验证分别留证。"
