@@ -34,6 +34,7 @@ description: Plan, implement, audit, and package Japanese-to-Chinese or English-
 | 有声无字幕、字幕错时、过场影片回装 | [影音与字幕](references/media.md) |
 | 音轨提取、语音转写、SRT/ASS、字幕烧录、硬字幕清底 | [媒体工具与重制流程](references/media-tools.md) |
 | 缺字／崩溃定位、运行验收、打包、旧版升级与发布 | [验证与交付](references/verification-and-release.md) |
+| PS2／PS3 在 PC、安卓、实机的本体分发、PKG 更新与 7z 选择 | [三平台交付方案](references/platform-delivery.md) |
 | PS3 目录重建 ISO、更新/DLC 与 CFW/HEN 实机候选 | [PS3 封装与实机边界](references/ps3-packaging.md) |
 | 新平台／引擎的适配边界 | [适配器约定](references/adapters.md) |
 | 完整项目编排、传统汉化分工与 AI 的边界 | [项目流程](references/project-workflow.md) |

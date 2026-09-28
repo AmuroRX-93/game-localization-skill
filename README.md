@@ -27,13 +27,13 @@ flowchart LR
 
 ## 安装和使用
 
-**推荐下载总包：[game-localization-all-v0.6.0.zip](https://github.com/AmuroRX-93/game-localization-skill/releases/download/v0.6.0/game-localization-all-v0.6.0.zip)**。解压后按工具选择 Codex、Cursor、Kimi Code、Qwen Code 或 CodeBuddy 文件夹，每份都有「先看这里.md」。不用分别下载，也不要把整个总包安装到技能目录。
+**推荐下载总包：[game-localization-all-v0.6.1.zip](https://github.com/AmuroRX-93/game-localization-skill/releases/download/v0.6.1/game-localization-all-v0.6.1.zip)**。解压后按工具选择 Codex、Cursor、Kimi Code、Qwen Code 或 CodeBuddy 文件夹，每份都有「先看这里.md」。不用分别下载，也不要把整个总包安装到技能目录。
 
-**Cursor 用户：** 下载 `game-localization-cursor-v0.6.0.zip`，按包内 `先看这里.md` 将技能放到项目的 `.cursor/skills/`，在 Agent 中用 `/game-localization` 调用。[Cursor 安装说明](docs/CURSOR.md) · [国产工具与兼容范围](docs/COMPATIBILITY.md)
+**Cursor 用户：** 下载 `game-localization-cursor-v0.6.1.zip`，按包内 `先看这里.md` 将技能放到项目的 `.cursor/skills/`，在 Agent 中用 `/game-localization` 调用。[Cursor 安装说明](docs/CURSOR.md) · [国产工具与兼容范围](docs/COMPATIBILITY.md)
 
 **Codex 或其他工具：**
 
-下载 Release 中的 `game-localization-v0.6.0.zip`，解压，将整个 `game-localization` 文件夹放到你的技能目录；Codex 通常是 `~/.codex/skills/`，配置了 `CODEX_HOME` 时使用其中的 `skills/`。已有同名技能先比较差异，不直接覆盖定制版。开始新任务后调用：
+下载 Release 中的 `game-localization-v0.6.1.zip`，解压，将整个 `game-localization` 文件夹放到你的技能目录；Codex 通常是 `~/.codex/skills/`，配置了 `CODEX_HOME` 时使用其中的 `skills/`。已有同名技能先比较差异，不直接覆盖定制版。开始新任务后调用：
 
 > 使用 $game-localization 处理这个游戏的汉化。先核对版本和已有工程，列出文本、字体、贴图、字幕与未解析资源，再做一个能回填验证的小样。
 
@@ -43,7 +43,13 @@ flowchart LR
 
 其他支持文件型 Skill 的助手可加载 `SKILL.md` 并保留整个目录；不支持 Skill 的工具或人工团队可直接参考文档。没有绑定特定模型、云服务、操作系统或付费翻译 API。
 
-## 本次更新（v0.6.0）
+## 本次更新（v0.6.1）
+
+新增 [PS2／PS3 三平台交付方案](skills/game-localization/references/platform-delivery.md)：PC、安卓、实机六种场景的本体、更新和压缩分发选择。PS3 优先经过加载验证的 PKG 更新，PS2 以修补后的镜像为主；7z 用于传输包装，区分手机解压空间与实机部署条件。
+
+明确本项目自制安卓更新原型退役，玩家使用现成解压工具及宿主安装入口。补充 PKG 版本／底座／资源读取验证、官方更新与存档保护，以及各端能力的官方资料依据。本次是工作流文档更新，没有新增 PKG 生成器或宣布任何新游戏／设备已运行通过。
+
+## v0.6.0 影音工具更新
 
 新增可选影音工具 `scripts/media_toolkit.py`：音轨/声道选择、本地 faster-whisper 音频原文识别入口、字幕时间轴检查、SRT/ASS 导出、烧录预览，以及固定区域限定时段的简单去字候选。补齐无字幕影片新增中文、旧硬字幕清底后重做的流程。
 
