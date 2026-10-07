@@ -31,6 +31,7 @@ description: Plan, implement, audit, and package Japanese-to-Chinese or English-
 | 按用户样表生成任务/关卡 XLSX 校对稿 | [校对稿格式与生成脚本](references/review-workbooks.md) |
 | 日译中、英译中、日英版本对照与语言专项校对 | [日英汉化要点](references/languages.md) |
 | 编码、二进制封包、字库、内存、按钮贴图 | [资源写回与显示](references/resources-and-rendering.md) |
+| 统一字体、共用码表、字形复用、字库压缩与内存预算 | [字库压缩与复用](references/font-memory-and-reuse.md) |
 | 有声无字幕、字幕错时、过场影片回装 | [影音与字幕](references/media.md) |
 | 音轨提取、语音转写、SRT/ASS、字幕烧录、硬字幕清底 | [媒体工具与重制流程](references/media-tools.md) |
 | 缺字／崩溃定位、运行验收、打包、旧版升级与发布 | [验证与交付](references/verification-and-release.md) |
@@ -56,6 +57,7 @@ description: Plan, implement, audit, and package Japanese-to-Chinese or English-
 - 保护控制码、格式变量、内部资源键、指针及空字符串边界。不要把所有日文／英文都当作可翻译显示文本。
 - 不把假名清零、修改字节数或 OCR 数量当作完成率。资源覆盖、条目覆盖、翻译审校、字形映射和场景验证分开统计。
 - 不凭同系列、同引擎套用结构、术语含义、补丁地址或崩溃原因；先核对该版本证据。
+- 字体优先采用用户指定的一套字体源和稳定码表；兼容的字形及资源尽量复用，只为确有需要的字号、度量、格式或生命周期保留变体。按消费者收集所需字符，避免每个标题／数字字库都灌入完整中文集；扩字前按[字库压缩与复用](references/font-memory-and-reuse.md)预算驻留内存。
 - 保留用户存档和当前可玩版本。实验副本可复用不可变素材，但不能通过硬链接或共享路径破坏基线。避免每次小改都复制整个游戏。
 - 保留原译文、素材、字体和工具的来源与许可记录；区别原作者、移植者和新增翻译。公开仓库不携带私人记录或与技能无关的游戏资产。
 
