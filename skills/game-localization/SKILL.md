@@ -72,6 +72,8 @@ description: Plan, implement, audit, and package Japanese-to-Chinese or English-
 
 本用户的每个游戏开发／汉化项目都建立独立的 GitHub **私人仓库**；已有对应私人仓库则复用。每次完成一批实质修改后提交并推送开发内容，不只在发布时推送，不反复从零建仓库或打包上传整个工程。用户已授权此范围的私人开发同步，按[Git 增量同步规则](references/verification-and-release.md#git-增量同步规则2026-10-14用户要求)执行；公开发布与发行附件仍按其单独授权处理。
 
+**Skill 本身按用户明确要求继续维护在公开仓库 [AmuroRX-93/game-localization-skill](https://github.com/AmuroRX-93/game-localization-skill)**，日常修改直接向该仓库增量推送；上述私人仓库要求针对游戏开发项目，不套用到这个公开 Skill。
+
 ## 每轮收尾
 
 留下简短状态：基线／候选指纹、修改与覆盖范围、术语决定、验证证据、未验证项、下一步、交付入口。先向用户说实际结果和位置，不把已准备、已写入、已实测、已发布混为一谈。
