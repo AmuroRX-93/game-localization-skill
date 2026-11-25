@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build five tool packages and one combined bundle from a single source. No network."""
+"""Build per-client tool packages and one combined bundle from a single source. No network."""
 import argparse
 import hashlib
 from pathlib import Path
@@ -8,12 +8,13 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL = ROOT / 'skills' / 'game-localization'
+CODEX_ONLY_PATHS = {'scripts/build_mission_review.mjs'}
 
 
 def write_archive(path, entries):
     with zipfile.ZipFile(path, 'w', compression=zipfile.ZIP_DEFLATED) as archive:
         for name, data in sorted(entries.items()):
-            info = zipfile.ZipInfo(name, date_time=(2026, 9, 20, 0, 0, 0))
+            info = zipfile.ZipInfo(name, date_time=(2026, 11, 25, 0, 0, 0))
             info.compress_type = zipfile.ZIP_DEFLATED
             info.external_attr = 0o100644 << 16
             archive.writestr(info, data)
@@ -26,7 +27,7 @@ def write_archive(path, entries):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--version', default='0.6.1')
+    parser.add_argument('--version', default='0.7.0')
     parser.add_argument('--output', type=Path, default=ROOT / 'dist')
     args = parser.parse_args()
     if not re.fullmatch(r'\d+\.\d+\.\d+', args.version):
@@ -46,11 +47,16 @@ def main():
         ('kimi', '.kimi-code/skills/game-localization/', '03-Kimi-Code', 'KIMI.md'),
         ('qwen', '.qwen/skills/game-localization/', '04-Qwen-Code', 'QWEN.md'),
         ('codebuddy', '.codebuddy/skills/game-localization/', '05-CodeBuddy', 'CODEBUDDY.md'),
+        ('dsh', '.dsh/skills/game-localization/', '06-DSH', 'DSH.md'),
+        ('antigravity', 'skills/game-localization/', '07-Antigravity', 'ANTIGRAVITY.md'),
     ]
     combined = {'先看这里.md': (ROOT / 'docs' / 'ALL-IN-ONE.md').read_bytes()}
     for flavor, prefix, folder, guide_name in variants:
-        entries = {prefix + name: data for name, data in files.items()
-                   if flavor == 'portable' or not name.startswith('agents/')}
+        entries = {
+            prefix + name: data
+            for name, data in files.items()
+            if flavor == 'portable' or (not name.startswith('agents/') and name not in CODEX_ONLY_PATHS)
+        }
         guide = (ROOT / 'docs' / guide_name).read_text(encoding='utf-8')
         guide = re.sub(r'v\d+\.\d+\.\d+\.zip', f'v{args.version}.zip', guide)
         entries['先看这里.md'] = guide.encode('utf-8')
